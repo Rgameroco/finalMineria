@@ -6,7 +6,6 @@ def get_data(user_id, movie_id):
     cursor = connection.cursor()
     cursor.execute('SELECT r.user::text, r.movie_id::text, r.rating FROM movies_rating r --WHERE r.movie_id in (SELECT rr.movie_id FROM movies_rating rr WHERE rr.user = %s) or r.movie_id = %s' %(user_id, movie_id))
     rows = cursor.fetchall()
-    print('1')
     users = {}
 
     for user, movie, rating in rows:
