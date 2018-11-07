@@ -1,0 +1,23 @@
+<h1>Recomendar</h1>
+
+<hr />
+
+<div>
+Recomendadas: {{ recomendadas|length }}
+</div>
+<ul>
+{% for rating, movie_id, movie_name in recomendadas %}
+    <li>{{ rating }} | {{ movie_id }} | {{ movie_name }}</li>
+{% endfor %}
+</ul>
+
+<hr />
+
+<div>
+Calificadas: {{ calificadas|length }}
+</div>
+<ul>
+{% for e in calificadas %}
+    <li>{{ e.rating }} | {{ e.movie.id }} | {{ e.movie }}</li>
+{% endfor %}
+</ul>

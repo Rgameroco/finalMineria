@@ -1,0 +1,36 @@
+<h1>Predicciones</h1>
+
+<form method="POST" action="{% url 'movies:calificar' user %}">
+    {% csrf_token %}
+    <div>
+    <select name="movie">
+    {% for id, nombre, generos in no_calificadas %}
+        <option value="{{ id }}">{{ nombre }}</option>
+    {% endfor %}
+    </select>
+    </div>
+    <div>
+        <input name="rating" type="text" placeholder="Puntaje" />
+    </div>
+    <button type="submit" name="action" value="calificar">Calificar</button>
+    <button type="submit" name="action" value="predecir">Predecir</button>
+</form>
+
+<hr />
+
+<ul>
+{% for key, value in predicciones.items %}
+    <li>{{ key }} : {{ value }}</li>
+{% endfor %}
+</ul>
+
+<hr />
+
+<div>
+Calificadas: {{ calificadas|length }}
+</div>
+<ul>
+{% for e in calificadas %}
+    <li>{{ e.rating }} | {{ e.movie.id }} | {{ e.movie }}</li>
+{% endfor %}
+</ul>
